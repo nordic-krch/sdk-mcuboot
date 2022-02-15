@@ -40,6 +40,8 @@ static inline void nrf_cleanup_rtc(NRF_RTC_Type * rtc_reg)
 static void nrf_cleanup_clock(void)
 {
     nrf_clock_int_disable(NRF_CLOCK, 0xFFFFFFFF);
+    nrf_clock_task_trigger(NRF_CLOCK, NRF_CLOCK_TASK_LFCLKSTOP);
+    nrf_clock_task_trigger(NRF_CLOCK, NRF_CLOCK_TASK_HFCLKSTOP);
 }
 
 void nrf_cleanup_peripheral(void)
